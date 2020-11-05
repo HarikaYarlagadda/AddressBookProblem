@@ -1,5 +1,6 @@
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -19,6 +20,7 @@ void askUser() {
 	System.out.println("Select an action..");
 	System.out.println("1. To Create a new contact");
 	System.out.println("2. To fill details of contact");
+	System.out.println("3. To display/read details of contact");
 	int choice = scanner.nextInt();
 	switch(choice) {
 	case 1:
@@ -30,6 +32,11 @@ void askUser() {
 	case 2:
 	        
 		fillDetailsOfContact();
+		System.out.println("\n");
+		askUser();
+		break;
+	case 3:
+		readDetailsOfContact();
 		System.out.println("\n");
 		askUser();
 		break;
@@ -90,9 +97,11 @@ private void fillDetailsOfContact() {
         String state=sc.nextLine();
         System.out.print("\nEnter zip:");
         String zip=sc.nextLine();                
-        System.out.print("\n entered city,state and zip is: "+city +state +zip);
+        System.out.print("\n entered city: "+city);
         bufferedWriter.write(city.toString());
+        System.out.print("\nYou entered state: "+state); 
 	    bufferedWriter.write( state.toString());
+	    System.out.print("\nYou entered zip: "+zip); 
         bufferedWriter.write( zip.toString());
 	    System.out.print("\nEnter phonenumber: ");  
 	    String phonenumber= sc.nextLine();                 
@@ -105,4 +114,24 @@ private void fillDetailsOfContact() {
 	}
 	
 }
+
+private void readDetailsOfContact() {
+	System.out.print("Enter file name to read: ");
+	String fileName = scanner.next();
+    try {
+  	  File myObj = new File("D:addressbookof" +fileName);
+        Scanner myReader = new Scanner(myObj);
+        while (myReader.hasNextLine()) {
+          String data = myReader.nextLine();
+          System.out.println(data);
+        }
+        myReader.close();
+      } catch (FileNotFoundException e) {
+        System.out.println("An error occurred.");
+        e.printStackTrace();
+      }
+
+
 }
+}
+	
