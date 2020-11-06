@@ -1,8 +1,13 @@
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class AddressBookProblem {
@@ -22,7 +27,8 @@ void askUser() {
 	System.out.println("2. To fill details of contact");
 	System.out.println("3. To display/read details of contact");
 	System.out.println("4. To delete");
-	System.out.println("5. Quit");
+	System.out.println("5. To edit the details of contact");
+	System.out.println("6. Quit");
 	int choice = scanner.nextInt();
 	switch(choice) {
 	case 1:
@@ -44,6 +50,11 @@ void askUser() {
 		break;
 	case 4:
 		deleteFile();
+		System.out.println();
+		askUser();
+		break;
+	case 5:
+		editDetails();
 		System.out.println();
 		askUser();
 		break;
@@ -156,4 +167,75 @@ private void deleteFile() {
 	        }
 	
 }
+private void editDetails()  
+	{
+		System.out.print("Enter file name to read: ");
+		@SuppressWarnings("resource")
+		Scanner scanner = new Scanner(System.in);
+		String fileName = scanner.next();
+		System.out.println("\nYou choose to EDIT");
+		System.out.println("Press 1 to EDIT Address");
+		System.out.println("Press 2 to EDIT firstname");
+		System.out.println("Press 3 to EDIT secondname");
+		System.out.println("Press 4 to EDIT city");
+		System.out.println("Press 5 to EDIT state");
+		System.out.println("Press 6 to EDIT zip");
+		System.out.println("Press 7 to EDIT phonenumber");
+
+		int choice = scanner.nextInt();
+		switch(choice) 
+		{
+		case 1:
+			editoptions(choice,fileName); 
+            break;
+		case 2:
+			editoptions(choice,fileName); 
+            break;
+		case 3:
+			editoptions(choice,fileName); 
+            break;
+		case 4:
+			editoptions(choice,fileName); 
+            break;
+		case 5:
+			editoptions(choice,fileName); 
+            break;
+		case 6:
+			editoptions(choice,fileName); 
+            break;
+		case 7:
+			editoptions(choice,fileName); 
+            break;
+	}
+  }
+	 public static void setVariable(int lineNumber, String data,String fileName) throws IOException 
+	 {
+			
+		    Path path = Paths.get("D:Addressbookof"+fileName);
+		    java.util.List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+		    lines.set(lineNumber - 1, data);
+		    Files.write(path, lines, StandardCharsets.UTF_8);
+	 }
+
+	void editoptions(int choice,String fileName) 
+	 {
+		    @SuppressWarnings("resource")
+			Scanner scanner = new Scanner(System.in);
+		    System.out.print("\n Enter text :");
+			String Text = scanner.next();
+			try
+			{
+			@SuppressWarnings("unused")
+			File obj =new File("D:addressbookof"+fileName);
+		    setVariable(choice, Text,fileName);
+		    System.out.println("Done");
+			} 
+			catch(IOException e)
+			{
+						    System.out.println("COULD NOT EDIT FILE");
+						
+			}
+	 }
+
 }
+
