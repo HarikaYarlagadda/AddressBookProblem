@@ -21,6 +21,8 @@ void askUser() {
 	System.out.println("1. To Create a new contact");
 	System.out.println("2. To fill details of contact");
 	System.out.println("3. To display/read details of contact");
+	System.out.println("4. To delete");
+	System.out.println("5. Quit");
 	int choice = scanner.nextInt();
 	switch(choice) {
 	case 1:
@@ -38,6 +40,11 @@ void askUser() {
 	case 3:
 		readDetailsOfContact();
 		System.out.println("\n");
+		askUser();
+		break;
+	case 4:
+		deleteFile();
+		System.out.println();
 		askUser();
 		break;
 		
@@ -133,5 +140,20 @@ private void readDetailsOfContact() {
 
 
 }
-}
+private void deleteFile() { 
+		   @SuppressWarnings("resource")
+		Scanner scanner = new Scanner(System.in);
+		   System.out.print("Enter file name to delete: ");
+		   String fileName = scanner.next();
+		   File file = new File("D:addressbookof"+fileName); 
+	        if(file.delete()) 
+	        { 
+	            System.out.println("File deleted successfully"); 
+	        } 
+	        else
+	        { 
+	            System.out.println("file is not available to delete"); 
+	        }
 	
+}
+}
