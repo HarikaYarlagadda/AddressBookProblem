@@ -13,13 +13,12 @@ import java.util.Scanner;
 
 public class AddressBookProblem {
 
-		Scanner scanner = new Scanner(System.in);
+	Scanner scanner = new Scanner(System.in);
 
-		public static void main(String[] args) throws Exception {
-			System.out.println("Welcome to address book problem");
-			AddressBookProblem addressBook = new AddressBookProblem();
-			addressBook.askUser();
-
+	public static void main(String[] args) throws Exception {
+	System.out.println("Welcome to address book problem");
+	AddressBookProblem addressBook = new AddressBookProblem();
+	addressBook.askUser();
 	}
 
 void askUser() throws Exception {
@@ -93,26 +92,24 @@ private void fillDetailsOfContact() {
 	        write.createNewFile();
 	    }
 
-	    FileWriter fileWriter = new FileWriter(write, true);
-
-	    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-	    @SuppressWarnings("resource")
-		Scanner sc= new Scanner(System.in); 
-	   
-	    System.out.print("\nEnter firstName:");  
-	    String firstName= sc.nextLine();
-	    System.out.println("\nEnter lastName");
+	FileWriter fileWriter = new FileWriter(write, true);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+	@SuppressWarnings("resource")
+	Scanner sc= new Scanner(System.in); 
+	System.out.print("\nEnter firstName:");  
+	String firstName= sc.nextLine();
+	System.out.println("\nEnter lastName");
         String lastName = sc.nextLine();  
-	    System.out.print("\nYou entered firstname and lastname: "+firstName +lastName);   
-		bufferedWriter.write( firstName);
+	System.out.print("\nYou entered firstname and lastname: "+firstName +lastName);   
+	bufferedWriter.write( firstName);
         bufferedWriter.write( lastName );
         System.out.print("\nEnter a address: ");
         String address= sc.nextLine();
         System.out.print("\nYou entered address: "+address);
         bufferedWriter.write(   address.toString());
         System.out.print("\nEnter city:");  
-	    String city= sc.nextLine();
-	    System.out.print("\nEnter state:");
+	String city= sc.nextLine();
+	System.out.print("\nEnter state:");
         String state=sc.nextLine();
         System.out.print("\nEnter zip:");
         String zip;
@@ -131,12 +128,12 @@ private void fillDetailsOfContact() {
         System.out.print("\n entered city: "+city);
         bufferedWriter.write(city.toString());
         System.out.print("\nYou entered state: "+state); 
-	    bufferedWriter.write( state.toString());
-	    System.out.print("\nYou entered zip: "+zip); 
+	bufferedWriter.write( state.toString());
+	System.out.print("\nYou entered zip: "+zip); 
         bufferedWriter.write( zip.toString());
-	    System.out.print("\nEnter phoneNumber: ");  
-	    String phoneNumber;
-	    while(true) 
+	System.out.print("\nEnter phoneNumber: ");  
+	String phoneNumber;
+	while(true) 
 		   {
 		    System.out.print("\nEnter phoneNumber: ");  
 		    phoneNumber= sc.nextLine();              //reads string  
@@ -149,11 +146,11 @@ private void fillDetailsOfContact() {
 		      else
 		    	  System.out.println("Entered mobile number is invalid");
 		   }   
-		bufferedWriter.write( phoneNumber.toString() );
-	    bufferedWriter.close();
-	    System.out.println("\nDone");
+          bufferedWriter.write( phoneNumber.toString() );
+	  bufferedWriter.close();
+	  System.out.println("\nDone");
 	} catch(IOException e) {
-	    System.out.println("COULD NOT WRITE INTO FILE!!");
+	  System.out.println("COULD NOT WRITE INTO FILE!!");
 	}
 	
 }
@@ -162,11 +159,11 @@ private void readDetailsOfContact() {
 	System.out.print("Enter file name to read: ");
 	String fileName = scanner.next();
     try {
-  	  File myObj = new File("D:addressbookof" +fileName);
-        Scanner myReader = new Scanner(myObj);
-        while (myReader.hasNextLine()) {
-          String data = myReader.nextLine();
-          System.out.println(data);
+  	 File myObj = new File("D:addressbookof" +fileName);
+         Scanner myReader = new Scanner(myObj);
+         while (myReader.hasNextLine()) {
+         String data = myReader.nextLine();
+         System.out.println(data);
         }
         myReader.close();
       } catch (FileNotFoundException e) {
@@ -178,18 +175,18 @@ private void readDetailsOfContact() {
 }
 private void deleteFile() { 
 		   @SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in);
+		   Scanner scanner = new Scanner(System.in);
 		   System.out.print("Enter file name to delete: ");
 		   String fileName = scanner.next();
 		   File file = new File("D:addressbookof"+fileName); 
-	        if(file.delete()) 
-	        { 
-	            System.out.println("File deleted successfully"); 
-	        } 
-	        else
-	        { 
-	            System.out.println("file is not available to delete"); 
-	        }
+	           if(file.delete()) 
+	            { 
+	              System.out.println("File deleted successfully"); 
+	            } 
+	          else
+	            { 
+	              System.out.println("file is not available to delete"); 
+	            }
 	
 }
 private void editDetails() throws Exception 
@@ -244,13 +241,13 @@ private void editDetails() throws Exception
  void editoptions(int choice,String contactName) 
  {
 	    @SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in);
+	    Scanner scanner = new Scanner(System.in);
 	    System.out.print("\n Enter text :");
 		String Text = scanner.next();
 		try
 		{
-		@SuppressWarnings("unused")
-		File obj =new File("D:addressbookof"+contactName);
+            @SuppressWarnings("unused")
+	    File obj =new File("D:addressbookof"+contactName);
 	    setVariable(choice, Text,contactName);
 	    System.out.println("Done");
 		} 
